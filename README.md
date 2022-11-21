@@ -7,8 +7,8 @@
 
 ### ⏸️ Algunos problemas en la instalación
 Es posible que sea necesario instalar las siguientes cosas parar instalar tidyverse,ggimage y ggtext:
-<sudo apt-get install libcurl4-openssl-dev
- sudo apt-get install libmagick++-dev>
+'sudo apt-get install libcurl4-openssl-dev'
+'sudo apt-get install libmagick++-dev'
 
 
 
