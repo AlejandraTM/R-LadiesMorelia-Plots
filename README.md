@@ -7,7 +7,7 @@
   
 * **sysfonts y showtext:** Permite cargar fuentes diferentes desde [Google](https://fonts.google.com/) y ajustar la [tipografía](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html).
 
-Para su instalación:
+Instalar:
 
 <pre><code># list of packages used in this workshop
 
@@ -19,6 +19,21 @@ installed_packages <- packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
   install.packages(packages[!installed_packages])
 } </pre></code>
+
+Importar:
+
+<pre><code>#includes dplyr + ggplot
+
+library(tidyverse)
+
+#ggplot extension packages
+
+library(ggimage)
+
+#to add google font libraries
+
+library(sysfonts)
+library(showtext)</pre></code>
 
 ### ⏸️ Algunos problemas en la instalación
 Es posible que sea necesario instalar lo siguientes previo a tidyverse,ggimage y ggtext:
