@@ -1,15 +1,20 @@
 # 🎃 Gráficos de Horror 🎃
 
 ## Librerias
-[**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
-[**ggimage y ggtext**](https://exts.ggplot2.tidyverse.org/) Son extensiones de ggplot2 que permiten mejorar el texto en los gràficos y permite introducir imágenes en el mismo.
-[**sysfonts y showtext**] Permite cargar fuentes diferentes desde [Google](https://fonts.google.com/) y ajustar la [tipografía](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html).
+  [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
+  
+  [**ggimage y ggtext**](https://exts.ggplot2.tidyverse.org/) Son extensiones de ggplot2 que permiten mejorar el texto en los gràficos y permite introducir imágenes en el mismo.
+  
+  [**sysfonts y showtext**] Permite cargar fuentes diferentes desde [Google](https://fonts.google.com/) y ajustar la [tipografía](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html).
 
 Para su instalación:
 
-<pre><code> #list of packages used in this workshop
+<pre><code># list of packages used in this workshop
+
 packages<- c("tidyverse","ggimage","sysfonts","showtext")
+
 # if package not already installed, install package
+
 installed_packages <- packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
   install.packages(packages[!installed_packages])
