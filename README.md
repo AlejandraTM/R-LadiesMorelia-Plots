@@ -52,12 +52,12 @@ sysfonts::font_add_google("Creepster","Creepster")
 showtext::showtext_auto() 
 </pre></code>
 
-### 🟥 Algunos problemas en la instalación
+### Algunos problemas en la instalación
 Es posible que sea necesario instalar lo siguientes previo a tidyverse,ggimage y ggtext:
 <pre><code>sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install libmagick++-dev </code></pre>
 
-## Datos
+## 📑 Datos
 
 Los datos fueron tomados de [TMDB](https://www.themoviedb.org/) (The movie Data Base) usando el [API](https://developers.themoviedb.org/3/getting-started/introduction) por [Tanya Shapiro](https://www.tanyashapiro.com/).
 
@@ -114,38 +114,43 @@ Se usará **[dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wran
 <pre><code>
 # url de las imagenes 
 # Conecciòn a la url del poster de la pelìcula
+
 base_url<-'https://www.themoviedb.org/t/p/w1280'
 df <- raw|>
   mutate(budget = budget/1000000,
          revenue = revenue/1000000,
          #convertir datos de caracter a fecha
          release_date = as.Date(release_date),
-         #Dividir la fecha de lanzamiento en mes y año
-         release_year = as.numeric(format(release_date, '%Y')),
+         release_year = as.numeric(format(release_date, '%Y')), #Dividir la fecha de lanzamiento en mes y año
          release_month = as.numeric(format(release_date, '%m')),
-         #Concatenar base_url con la direcciòn del poster y obtener la url final
-         poster_url = paste0(base_url,poster_path))
+         poster_url = paste0(base_url,poster_path)) #Concatenar base_url con la direcciòn del poster y obtener la url final
+         
 #Ver parte de los datos
 head(df,5)
 </pre></code>
 
-### Primera gràfica: Scatter
+## 📈 Primera gràfica: Scatter
 
 Primero seleccionaré algunas de mis peliculas favoritas:
 
 <pre><code>
 #lista de peliculas tomadas desde su colección de peliculas
+
 fav<- c("Saw collection","The grudge collection","Insiduous collection","28 Days/weeks later collection",
         "The conjuring collection","Annabelle collection")
+        
 #Creación del dataframe
+
 df_fav<-df|>
-  #filtran las peliculas con respecto a la lista fav
-  filter(collection_name %in% fav & budget>0 & revenue>0)|>
-  #Se quita "Collection" de collection_name
-  mutate(collection_name = gsub(" Collection","",collection_name))|>
-  #subet columns with select
-  select(title, collection_name, budget, revenue, popularity)
+  
+  filter(collection_name %in% fav & budget>0 & revenue>0)|> #filtran las peliculas con respecto a la lista fav
+  
+  mutate(collection_name = gsub(" Collection","",collection_name))|> #Se quita "Collection" de collection_name
+  
+  select(title, collection_name, budget, revenue, popularity) #Seleccionar algunas columnas
+  
 #Vista de algunos datos
+
 head(df_slashers,5)
 </pre></code>
 
