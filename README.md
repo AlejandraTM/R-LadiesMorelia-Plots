@@ -77,7 +77,7 @@ head(raw,5)
 
 ### Diccionario de los datos
 
-Son 32540 datos cada uno con 20 variables que los caracterizan. En la siguente tabla se muestran las variables, el tipo, una pequeña descripciòn y un ejemplo.
+Son 32540 datos cada uno con 23 variables que los caracterizan. En la siguente tabla se muestran las variables, el tipo, una pequeña descripciòn y un ejemplo.
 
 | **Variable**          | **Tipo** | **Definición**             | **Eejemplo**                    |
 |:---------------|:--------------:|:------------------|:---------------------|
@@ -97,8 +97,10 @@ Son 32540 datos cada uno con 20 variables que los caracterizan. En la siguente t
 | **runtime**           |   int    | Duraciòn de la película    | 91                              |
 | **status**            |   char   | movie status               | Released                        |
 | **genre_names**       |   char   | Listado de géneros         | Horror, Thriller                |
-| **collection_id**     |   num    | ID de la colecciòn         | NA                              |
+| **collection**        |   num    | ID de la colecciòn         | NA                              |
 | **collection_name**   |   char   | Nombre de la colecciòn     | NA                              |
+| **release_year**      |   int    | Año de lanzamiento         | 2001                            |
+| **release_month**     |   int    | Mes de lanzamiento         | 10                              |
 
 ### Preprocesamiento
 
@@ -126,5 +128,26 @@ df <- raw|>
 #Ver parte de los datos
 head(df,5)
 </pre></code>
+
+### Primera gràfica: Scatter
+
+Primero seleccionaré algunas de mis peliculas favoritas:
+
+<pre><code>
+#lista de peliculas tomadas desde su colección de peliculas
+fav<- c("Saw collection","The grudge collection","Insiduous collection","28 Days/weeks later collection",
+        "The conjuring collection","Annabelle collection")
+#Creación del dataframe
+df_fav<-df|>
+  #filtran las peliculas con respecto a la lista fav
+  filter(collection_name %in% fav & budget>0 & revenue>0)|>
+  #Se quita "Collection" de collection_name
+  mutate(collection_name = gsub(" Collection","",collection_name))|>
+  #subet columns with select
+  select(title, collection_name, budget, revenue, popularity)
+#Vista de algunos datos
+head(df_slashers,5)
+</pre></code>
+
 
 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
