@@ -73,7 +73,7 @@ raw <- readr::read_csv("https://raw.githubusercontent.com/tashapiro/horror-movie
 #Vista previa de los datos
 
 head(raw,5)
-</prep></code>
+</pre></code>
 
 ### Diccionario de los datos
 
@@ -102,13 +102,29 @@ Son 32540 datos cada uno con 20 variables que los caracterizan. En la siguente t
 
 ### Preprocesamiento
 
-Se usará **[dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)** para modificar algunas columnas y emparejar algunas otras.
+Se usará **[dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)** para modificar algunas columnas y emparejar algunas otras. Los pasos a seguir son:
 
-🧹 To-Dos:
+-   Escribir las cantidades de *budget* y *revenue* en millones
+-   Convertir *release_date* de caracter a fecha
+-   Crear *release_year* y *release_month*
+-   Añadir a *poster_path* la imagen en cartelera de la pelicula, tomada de themoviedb  creando un *poster_url*
 
--   Express *budget* and *revenue* in millions
--   Convert *release_date* from char to date
--   Create *release_year* and *release_month*
--   Append *poster_path* to themoviedb url to create a *poster_url*
+<pre><code>
+# url de las imagenes 
+# Conecciòn a la url del poster de la pelìcula
+base_url<-'https://www.themoviedb.org/t/p/w1280'
+df <- raw|>
+  mutate(budget = budget/1000000,
+         revenue = revenue/1000000,
+         #convertir datos de caracter a fecha
+         release_date = as.Date(release_date),
+         #Dividir la fecha de lanzamiento en mes y año
+         release_year = as.numeric(format(release_date, '%Y')),
+         release_month = as.numeric(format(release_date, '%m')),
+         #Concatenar base_url con la direcciòn del poster y obtener la url final
+         poster_url = paste0(base_url,poster_path))
+#Ver parte de los datos
+head(df,5)
+</pre></code>
 
 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
