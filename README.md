@@ -129,7 +129,7 @@ df <- raw|>
 head(df,5)
 </pre></code>
 
-## 📈 Primera gràfica: Scatter
+## 📈 Primera gráfica: Scatter
 
 Primero seleccionaré algunas de mis peliculas favoritas:
 
@@ -142,16 +142,52 @@ fav<- c("Saw collection","The grudge collection","Insiduous collection","28 Days
 #Creación del dataframe
 
 df_fav<-df|>
-  
   filter(collection_name %in% fav & budget>0 & revenue>0)|> #filtran las peliculas con respecto a la lista fav
-  
   mutate(collection_name = gsub(" Collection","",collection_name))|> #Se quita "Collection" de collection_name
-  
   select(title, collection_name, budget, revenue, popularity) #Seleccionar algunas columnas
   
 #Vista de algunos datos
 
 head(df_slashers,5)
+</pre></code>
+
+Una **Scatter plot** es una gráfica que presenta la relaciòn entre dos variables en un conjunto de datos. Muestra los datos en un plano o sistema cartesiano. 
+
+<pre><code>
+#Crear la gráfica
+plot_scatter<-ggplot(df_fav, mapping=aes(y=revenue, x=budget))+
+  geom_point(mapping=aes(size=popularity, color=collection_name), alpha=0.6)+
+  scale_color_manual(values = c("#DB2B39","#29335C","#F3A712",'#3ED58E','#a64d79','#674ea7'))+
+  guides(
+    color = guide_legend(override.aes = list(size=4)),
+    size = guide_legend(override.aes=list(shape=21,color="black",fill="white"))
+  )+
+  labs(title="Peliculas Favoritas: Ingresos vs. Presupuesto", 
+       subtitle = "Comparando las películas en su popularidad en la franquicia",
+       y="Ingresos (millones USD)",
+       x="Presupuesto (millones USD)",
+       caption = "Datos tomados de The Movie Database",
+       size = "Popularidad (votos-miles)", 
+       color = "Franquicia")+
+  theme_minimal()
+#Ver la gráfica
+plot_scatter
+#Guardar la gráfica
+ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, units="in", bg="white")
+</pre></code>
+
+## 📈 Segunda Gráfica: Gràfica de líneas
+
+Con esta gráfica se quiere saber cuántas películas fueron estrenadas por mes y año. Para ello se organizan los datos con **dplyr** usando **group_by** en *release_month* y *release_year* desde 1993 al 2021
+
+<pre><code>
+df_monthly<-df|>
+  group_by(release_year, release_month)|>  #Agregar datos por año y mes
+  summarise(count=n())|> #conteo de las películas
+  filter(release_year>=1993 & release_year<=2021)#Filtrar los datos desde 1993 a 2021
+  
+#Ver parte de los datos
+head(df_monthly,5)
 </pre></code>
 
 
