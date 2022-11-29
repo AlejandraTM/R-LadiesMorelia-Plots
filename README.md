@@ -1,6 +1,6 @@
 # 🎃 Gráficos de Horror 🎃
 
-🔗 [R Script](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R)
+Antes de iniciar copia el 🔗 [R Script.](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R)
 
 ## 📚 Librerias
 * [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
@@ -379,4 +379,4 @@ save(filename="plot_bar.png", plot=plot_bar,width=8,height=8, units="in")
 </p>
 </div>
 
-🧬 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
+🧬 A plots example of a horror database using ggplot2. The espanish version of the [R-Ladies Paris workshop.](https://github.com/tashapiro/horror-movies)
