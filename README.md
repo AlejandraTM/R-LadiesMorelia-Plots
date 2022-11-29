@@ -8,7 +8,8 @@
 * **[sysfonts](https://cran.r-project.org/web/packages/sysfonts/sysfonts.pdf) y [showtext](https://journal.r-project.org/archive/2015-1/qiu.pdf):** Permite cargar fuentes diferentes desde [Google](https://fonts.google.com/) y ajustar la [tipografía](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html).
 
 ### Instalar:
-```
+
+```{r}
 # lista de paquetes
 packages<- c("tidyverse","ggimage","sysfonts","showtext")
 
