@@ -3,7 +3,7 @@
 ## Librerias
 * [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
   
-* [**ggimage y ggtext:**](https://exts.ggplot2.tidyverse.org/) Son extensiones de ggplot2 que permiten mejorar el texto en los gràficos y permite introducir imágenes en el mismo.
+* [**ggimage y ggtext:**](https://exts.ggplot2.tidyverse.org/) Son extensiones de ggplot2 que permiten mejorar el texto en los gráficos y permite introducir imágenes en el mismo.
   
 * **[sysfonts](https://cran.r-project.org/web/packages/sysfonts/sysfonts.pdf) y [showtext](https://journal.r-project.org/archive/2015-1/qiu.pdf):** Permite cargar fuentes diferentes desde [Google](https://fonts.google.com/) y ajustar la [tipografía](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html).
 
@@ -53,7 +53,7 @@ showtext::showtext_auto()
 </pre></code>
 
 ### Algunos problemas en la instalación
-Es posible que sea necesario instalar lo siguientes previo a tidyverse,ggimage y ggtext:
+Es posible que sea necesario instalar lo siguiente previo a tidyverse,ggimage y ggtext:
 <pre><code>sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install libmagick++-dev </code></pre>
 
