@@ -225,4 +225,50 @@ plot_line<-ggplot(data = df_monthly_2000,
 plot_line
 </pre></code>
 
+También es posible hacer un gráfico comparativo de gráficas de líneas usando [**facet_wrap**](https://ggplot2.tidyverse.org/reference/facet_wrap.html). Para nuestro caso, se comparan el número de estrenos, por mes y año, de películas de terror desde 2004 a 2021. Primero, se filtraron los datos de 2004 a 2021, de la misma forma como se hizó para el gráfico anterior, y con dicha información se hizo la comparación.
+
+<pre><code>
+#Datos
+df_monthly2<-df|>
+  group_by(release_year, release_month)|>  #Agregar datos por año y mes
+  summarise(count=n())|> #conteo de las películas
+  filter(release_year>=2004 & release_year<=2021)#Filtrar los datos desde 1993 a 2021
+#Ver parte de los datos
+head(df_monthly,5)
+
+#gráfico
+plot_facet<-ggplot(data = df_monthly2, mapping=aes(x=release_month, y=count, group=1))+
+  geom_line(color="green")+
+  facet_wrap(~release_year)+ #Generar las multiples subgráficas usando como pivote el año de estreno
+  scale_x_continuous(breaks=1:12, labels=month.abb[1:12])+
+  labs(x="",
+       y="Estrenos", 
+       title = "Estrenos de peliculas de terror",
+       caption = "Datos tomados de The Movie Database",
+       subtitle = "Total de estrenos por mes y año.")+
+  theme(
+    #Fondo y cuadrícula
+    plot.background = element_rect(fill=pal_bg, color=pal_bg),
+    panel.background = element_rect(fill=pal_bg),
+    strip.background = element_rect(fill="#521EA4"),
+    panel.grid.minor = element_blank(),
+    panel.grid = element_line(color=pal_grid, size=0.2),
+    #Texto
+    text = element_text(color=pal_text),
+    axis.text = element_text(color=pal_text),
+    axis.title.y = element_text(size=11, margin=margin(r=8)),
+    axis.text.x=element_text(angle=90, size=5),
+    plot.title = element_text(family="Creepster", size=20, hjust=0.5),
+    plot.subtitle = element_text(hjust=0.5, size=10),
+    strip.text=element_text(color=pal_text),
+    #Margenes
+    plot.margin = margin(l=20, r=20, b=20, t=20))
+plot_facet
+
+#Salvar imagen
+ggsave(filename="plot_facet.png", plot=plot_facet, width =7 , height=5, units="in")
+</pre></code>
+
+
+
 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
