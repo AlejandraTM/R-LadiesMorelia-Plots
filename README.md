@@ -375,7 +375,7 @@ save(filename="plot_bar.png", plot=plot_bar,width=8,height=8, units="in")
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_bar.png?raw=true" alt="JuveYell" width="500px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_bar.png?raw=true" alt="JuveYell" width="800px">
 </p>
 </div>
 
