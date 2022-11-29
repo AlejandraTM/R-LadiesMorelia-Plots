@@ -121,7 +121,11 @@ head(df,5)
 
 ## 📈 Primera gráfica: Scatter
 
-![Plot_scatter](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_scatter.png?raw=true)
+<div>
+<p style = 'text-align:center;'>
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_scatter.png?raw=true" width="800px">
+</p>
+</div>
 
 Primero seleccionaré algunas de mis peliculas favoritas:
 
@@ -174,8 +178,8 @@ ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, unit
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="600px">
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="600px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="500px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="500px">
 </p>
 </div>
 
