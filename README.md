@@ -9,7 +9,7 @@
 
 ### Instalar:
 
-<pre><code>
+<code>
 # lista de paquetes
 packages<- c("tidyverse","ggimage","sysfonts","showtext")
 
@@ -18,7 +18,7 @@ installed_packages <- packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
   install.packages(packages[!installed_packages])
 }
-</pre></code>
+</code>
 
 ### Importar:
 
