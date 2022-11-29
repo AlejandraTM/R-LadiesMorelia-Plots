@@ -1,5 +1,7 @@
 # 🎃 Gráficos de Horror 🎃
 
+🔗 [R Script](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R)
+
 ## 📚 Librerias
 * [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
   
@@ -304,11 +306,76 @@ En esta última gráfica se organizaran los datos de forma descendente con respe
 
 
 ```{r}
+#Se organizaran los datos de forma descendenter de acuerdo a los ingresos.  
+
+#Peliculas por ingresos
+df_top_movies<-df|>
+  arrange(-revenue)|>  #organizar los datos de forma descendente
+  select(title, release_year, revenue, budget, poster_url)|> #Tomar las columnas específicas
+  #Quedarse las primeras 10 columnas
+  head(10)
+#ver los datos
+head(df_top_movies,10)
+
+#Paleta de colores
+pal_bar<-'#A70000'
+
+#Gráfica
+plot_bar<-ggplot(data=df_top_movies, mapping=aes(y=reorder(title,revenue), x=revenue))+
+  #Barra horizontal con ganancia y presupuesto
+  geom_col(fill=pal_bar, width=0.35)+
+  geom_col(mapping=aes(x=budget), fill='#600000', width=0.15)+
+  #Textos con ganancias
+  geom_text(mapping=aes(x=revenue+18, label=round(revenue,0)), 
+            color="white", size=3.5)+
+  #Texto con nombre de la película y año de estreno
+  geom_text(mapping=aes(x=0, y=title, label=paste0(title, " (",release_year,")")), 
+            color="white", vjust=-1, hjust=0,size=4)+
+  #Imagen del poster de la película
+  geom_image(mapping=aes(x=-50, image=poster_url))+
+  #Anotación
+  annotate(geom="text", color="white", x=250, y=9.5, label="Presupuesto de la película", size=3)+
+  geom_curve(mapping=aes(x=250, xend=205, y=9.35, yend=9), 
+             color="white", curvature=-0.2, size=0.2, alpha=0.6,
+             arrow = arrow(length = unit(0.07, "inch")))+
+  #Ajustes del eje horizontal
+  scale_x_continuous(expand=c(0,0), 
+                     limits=c(-70,800),
+                     breaks = c(0, 100,200, 300, 400, 500, 600, 700))+
+  #Título y etiquetas
+  labs(x="Ganancia (milliones USD)", y="",
+       title="Películas de terror que arrasaron en taquilla",
+       subtitle="Top 10 de películas basado en las ganancias.",
+       caption = "Datos tomados de The Movie Database.")+
+  #Tema 
+  theme(
+    #Fondo
+    plot.background =element_rect(fill=pal_bg, color=pal_bg),
+    panel.background =element_rect(fill=pal_bg, color=pal_bg),
+    #Textos-Fuentes
+    text = element_text(color=pal_text, family="Acme"),
+    axis.text = element_text(color=pal_text),
+    axis.title.x = element_text(margin=margin(t=10)),
+    axis.text.y = element_blank(),
+    plot.subtitle = element_text(color=pal_subtext, size=12),
+    plot.caption = element_text(color=pal_subtext, size=12),
+    plot.title=element_text(family="Acme", size=30, color=pal_text),
+    #Lineas y cuadrícula
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    panel.grid.major.x= element_line(color=pal_grid, size=0.2),
+    #Margenes
+    plot.margin = margin(t=20, b=20, l=20, r=20)
+  )
+plot_bar
+
+#Guardar imagen
+save(filename="plot_bar.png", plot=plot_bar,width=8,height=8, units="in")
 ```
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="500px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_bar.png?raw=true" alt="JuveYell" width="500px">
 </p>
 </div>
 
