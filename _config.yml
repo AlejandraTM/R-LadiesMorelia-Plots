@@ -3,5 +3,5 @@ plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 title: [R-Ladies Morelia]
-description: [Horror movies scatter plots, line plots and bar plots.]
+description: [Horror movies scatter, line and bar plots.]
 show_downloads: true
