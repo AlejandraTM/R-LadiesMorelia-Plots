@@ -178,8 +178,7 @@ ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, unit
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="500px">
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="500px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="800px">
 </p>
 </div>
 
@@ -288,6 +287,12 @@ plot_facet
 #Salvar imagen
 ggsave(filename="plot_facet.png", plot=plot_facet, width =7 , height=5, units="in")
 </pre></code>
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="800px">
+</p>
+</div>
 
 ## 📈 Tercera Gráfica: Diagrama de barras
 
