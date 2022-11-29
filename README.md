@@ -174,8 +174,8 @@ ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, unit
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="300px">
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="300px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="600px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="600px">
 </p>
 </div>
 
