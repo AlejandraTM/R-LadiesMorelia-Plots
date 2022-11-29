@@ -1,6 +1,6 @@
 # 🎃 Gráficos de Horror 🎃
 
-🔗 Antes de iniciar copia el [R Script.](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R) o descarga el repositorio completo ☝️
+🔗 Antes de iniciar copia el [R Script](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R) o descarga el repositorio completo ☝️
 
 ## 📚 Librerias
 * [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
@@ -296,7 +296,7 @@ ggsave(filename="plot_facet.png", plot=plot_facet, width =7 , height=5, units="i
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="500px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="700px">
 </p>
 </div>
 
