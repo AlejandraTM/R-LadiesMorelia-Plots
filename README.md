@@ -22,18 +22,18 @@ if (any(installed_packages == FALSE)) {
 
 ### Importar:
 
-<pre><code>
+```{r}
 library(tidyverse) #includes dplyr + ggplot
 library(ggimage) #ggplot extension packages
 library(sysfonts) #to add google font libraries
 library(showtextdb) #Es necesaria para usar showtext
 library(showtext) #showtext convierte el texto en una imágen rasterizada (a base de pixeles) que luego se añade al gràfico
 library(dplyr)
-</pre></code>
+```
 
 ### Cargar fuentes
 
-<pre><code> 
+```{r}
 #Cargar fuentes
 
 sysfonts::font_add_google("Acme","Acme")
@@ -42,12 +42,16 @@ sysfonts::font_add_google("Creepster","Creepster")
 #Mostrar las fuentes
 
 showtext::showtext_auto() 
-</pre></code>
+```
 
 ### Algunos problemas en la instalación
+
 Es posible que sea necesario instalar lo siguiente previo a tidyverse,ggimage y ggtext:
-<pre><code>sudo apt-get install libcurl4-openssl-dev
-sudo apt-get install libmagick++-dev </code></pre>
+
+```{r}
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libmagick++-dev 
+```
 
 ## 📑 Datos
 
@@ -57,13 +61,13 @@ Los datos fueron tomados de [TMDB](https://www.themoviedb.org/) (The movie Data 
 
 Una vez se tengan los datos en un archivo *.csv * podemos cargarlos en nuestro script:
 
-<pre><code>
+```{r}
 #Descargar los datos del repositorio de GitHub
 raw <- readr::read_csv("https://raw.githubusercontent.com/AlejandraTM/R-LadiesMorelia-Plots/main/Datos/horror_movies.csv")
 
 #Ver parte de los datos
 head(raw,5)
-</pre></code>
+```
 
 ### Diccionario de los datos
 
@@ -101,7 +105,7 @@ Se usará **[dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wran
 -   Crear *release_year* y *release_month*
 -   Añadir a *poster_path* la imagen en cartelera de la pelicula, tomada de themoviedb  creando un *poster_url*
 
-<pre><code>
+```{r}
 # Creación del dataframe
 base_url<-'https://www.themoviedb.org/t/p/w1280'
 df <- raw|>
@@ -117,7 +121,7 @@ df <- raw|>
 
 #Ver parte de los datos
 head(df,5)
-</pre></code>
+```
 
 ## 📈 Primera gráfica: Scatter
 
@@ -129,7 +133,7 @@ head(df,5)
 
 Primero seleccionaré algunas de mis peliculas favoritas:
 
-<pre><code>
+```{r}
 #lista de peliculas tomadas desde su colección de peliculas
 fav<- c("Saw Collection","The grudge Collection","Insidious Collection","28 Days/Weeks Later Collection",
         "The Conjuring Collection","Annabelle Collection")
@@ -145,11 +149,11 @@ df_fav<-df|>
   
 #Vista de algunos datos
 head(df_fav,5)
-</pre></code>
+```
 
 Una **Scatter plot** es una gráfica que presenta la relaciòn entre dos variables en un conjunto de datos. Muestra los datos en un plano o sistema cartesiano. 
 
-<pre><code>
+```{r}
 #Crear la gráfica (Scatter)
 plot_scatter<-ggplot(df_fav, mapping=aes(y=revenue, x=budget))+
   geom_point(mapping=aes(size=popularity, color=collection_name), alpha=0.6)+
@@ -172,7 +176,7 @@ plot_scatter
 
 #Guardar la gráfica
 ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, units="in", bg="white")
-</pre></code>
+```
 
 ## 📈 Segunda Gráfica: Gráfica de líneas
 
@@ -184,7 +188,7 @@ ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, unit
 
 Con esta gráfica se quiere saber cuántas películas fueron estrenadas por mes y año. Para ello se organizan los datos con **dplyr** usando **group_by** en *release_month* y *release_year* desde 1993 al 2021. Con ellos se generará un segundo conjunto de datos filtrando solo las películas estrenadas en 1993.
 
-<pre><code>
+```{r}
 #Datos
 df_monthly<-df|>
   group_by(release_year, release_month)|>  #Agregar datos por año y mes
@@ -199,11 +203,11 @@ df_monthly_1993<- df_monthly|>filter(release_year==1993)#Número de películas e
 
 #Ver parte de los datos
 head(df_monthly_1993,5)
-</pre></code>
+```
 
 En esta gráfica se usarán las letras cargadas al inicio. Recordemos que es necesario haber llamado las librerias *sysfonts*, *showtextdb* y *showtext*.
 
-<pre></code>
+```{r}
 #Paleta de colores
 pal_text <-"white"
 pal_subtext <-"#DFDFDF"
@@ -242,11 +246,11 @@ plot_line
 
 #Guardar la imagen
 ggsave(filename="plot_line.png", plot=plot_line, width=7, height=5, units="in")
-</pre></code>
+```
 
 También es posible hacer un gráfico comparativo de diagramas de líneas usando [**facet_wrap**](https://ggplot2.tidyverse.org/reference/facet_wrap.html). Para nuestro caso, se compara el número de estrenos, por mes y año, de películas de terror desde 2004 a 2021. Primero, se filtraron los datos de 2004 a 2021, de la misma forma como se hizó para el gráfico anterior, y con dicha información se hizo la comparación.
 
-<pre><code>
+```{r}
 #Datos
 df_monthly2<-df|>
   group_by(release_year, release_month)|>  #Agregar datos por año y mes
@@ -286,7 +290,7 @@ plot_facet
 
 #Salvar imagen
 ggsave(filename="plot_facet.png", plot=plot_facet, width =7 , height=5, units="in")
-</pre></code>
+```
 
 <div>
 <p style = 'text-align:center;'>
@@ -299,11 +303,13 @@ ggsave(filename="plot_facet.png", plot=plot_facet, width =7 , height=5, units="i
 En esta última gráfica se organizaran los datos de forma descendente con respecto a los ingresos. Se usará la librería *dplyr* con la función **arrange()**. Luego, se tomarán solo las columnas necesarias para el gráfico usando **select()**. La gráfica final tendrá como barras principales las ganancias de cada película, como barra secundarias el presupuesto de las mismas y en su eje verticas estarà el poster de cada estreno acompañado del nombre y año de extreno de las películas sobre la barra principal. Todo lo anterior se obtiene al usar las funciones **geo_col()**, **geo_text()**, **geo_image()** y **geo_curve()** de la librería *ggimage*.
 
 
+```{r}
+```
 
-
-
-
-
-
+<div>
+<p style = 'text-align:center;'>
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="800px">
+</p>
+</div>
 
 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
