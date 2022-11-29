@@ -1,6 +1,6 @@
 # 🎃 Gráficos de Horror 🎃
 
-🔗  Antes de iniciar copia el [R Script.](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R)
+🔗 Antes de iniciar copia el [R Script.](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Codigos/HorrorPlots.R) o descarga el repositorio completo ☝️
 
 ## 📚 Librerias
 * [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
