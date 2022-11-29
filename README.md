@@ -22,21 +22,13 @@ if (any(installed_packages == FALSE)) {
 
 ### Importar:
 
-<pre><code>#includes dplyr + ggplot
-
-library(tidyverse)
-
-#ggplot extension packages
-
-library(ggimage)
-
-#to add google font libraries
-
-library(sysfonts)
-
-#showtext convierte el texto en una imágen rasterizada (a base de pixeles) que luego se añade al gràfico
-
-library(showtext)
+<pre><code>
+library(tidyverse) #includes dplyr + ggplot
+library(ggimage) #ggplot extension packages
+library(sysfonts) #to add google font libraries
+library(showtextdb) #Es necesaria para usar showtext
+library(showtext) #showtext convierte el texto en una imágen rasterizada (a base de pixeles) que luego se añade al gràfico
+library(dplyr)
 </pre></code>
 
 ### Cargar fuentes
@@ -176,7 +168,7 @@ plot_scatter
 ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, units="in", bg="white")
 </pre></code>
 
-## 📈 Segunda Gráfica: Gràfica de líneas
+## 📈 Segunda Gráfica: Gráfica de líneas
 
 Con esta gráfica se quiere saber cuántas películas fueron estrenadas por mes y año. Para ello se organizan los datos con **dplyr** usando **group_by** en *release_month* y *release_year* desde 1993 al 2021
 
@@ -190,5 +182,47 @@ df_monthly<-df|>
 head(df_monthly,5)
 </pre></code>
 
+En esta gráfica se usarán las letras cargadas al inicio. Recordemos que es necesario haber llamado las librerias *sysfonts*, *showtextdb* y *showtext*.
+
+<pre></code>
+#Gráfica de líneas mejorada
+
+#Paleta de colores
+pal_text <-"white"
+pal_subtext <-"#DFDFDF"
+pal_grid <-"grey30"
+pal_bg<-'#191919'
+
+
+#Gráfica 
+plot_line<-ggplot(data = df_monthly_2000, 
+                  mapping=aes(x=release_month, y=count))+
+  geom_line(color="green")+
+  annotate(geom="label", 
+           label="Peliculas a un epsilon de Halloween",
+           x=10, y=75, color=pal_text, fill=pal_bg, size=3)+#Anotaciones y ubicación
+  scale_x_continuous(breaks=1:12, labels=month.abb[1:12])+ #Escala del eje x
+  scale_y_continuous(limits=c(0,150))+ #Escala del eje y
+  labs(x="",
+       y="Número de películas", x="Mes",
+       title = "Películas de muedo estrenadas en 1993",
+       caption = "Datos tomados de The Movie Database")+
+  theme(
+    #Ajustes del fondo + cuadrícula
+    plot.background = element_rect(fill=pal_bg, color=pal_bg),#Color de fondo exterior a la gráfica y bordes de la imagen
+    panel.background = element_rect(fill=pal_bg),#Color del interior de la gráfica o fondo de la cuadrícula
+    panel.grid.minor = element_blank(),#Remover la cuadrícula menor
+    panel.grid = element_line(color=pal_grid, size=0.2),#color de la cuadrícula
+    #Color del texto
+    text = element_text(color=pal_text),#Color del título de la gráfica y  los ejes
+    axis.text = element_text(color=pal_text),#Color de la leyenda de los ejes
+    axis.title.y = element_text(size=10, margin=margin(r=10)),#Tamaño del título del eje y
+    axis.title.x = element_text(size=10, margin=margin(r=30)),#Tamaño del título del eje x
+    plot.title = element_text(family="Creepster", size=20, hjust=0.5),#Título de la gráfica con el texto importado de Google
+    #plot.subtitle = element_text(hjust=0.5),
+    #Marjenes de la gráfica
+    plot.margin = margin(l=20, r=20, b=20, t=20))
+plot_line
+</pre></code>
 
 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
