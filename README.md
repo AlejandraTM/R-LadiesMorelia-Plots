@@ -121,6 +121,8 @@ head(df,5)
 
 ## 📈 Primera gráfica: Scatter
 
+![Plot_scatter](https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_scatter.png?raw=true)
+
 Primero seleccionaré algunas de mis peliculas favoritas:
 
 <pre><code>
@@ -169,6 +171,13 @@ ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, unit
 </pre></code>
 
 ## 📈 Segunda Gráfica: Gráfica de líneas
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="300px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="300px">
+</p>
+</div>
 
 Con esta gráfica se quiere saber cuántas películas fueron estrenadas por mes y año. Para ello se organizan los datos con **dplyr** usando **group_by** en *release_month* y *release_year* desde 1993 al 2021. Con ellos se generará un segundo conjunto de datos filtrando solo las películas estrenadas en 1993.
 
