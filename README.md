@@ -1,6 +1,6 @@
 # 🎃 Gráficos de Horror 🎃
 
-## Librerias
+## 📚 Librerias
 * [**tidyverse:**](https://www.tidyverse.org/) Es una colección de paquetes de R-Ladies diseñados para Ciencia de Datos.
   
 * [**ggimage y ggtext:**](https://exts.ggplot2.tidyverse.org/) Son extensiones de ggplot2 que permiten mejorar el texto en los gráficos y permite introducir imágenes en el mismo.
@@ -123,11 +123,11 @@ df <- raw|>
 head(df,5)
 ```
 
-## 📈 Primera gráfica: Scatter
+## 📍 Primera gráfica: Scatter
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_scatter.png?raw=true" width="800px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_scatter.png?raw=true" width="500px">
 </p>
 </div>
 
@@ -182,7 +182,7 @@ ggsave(filename="plot_scatter.png", plot=plot_scatter, width =7 , height=5, unit
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="800px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_line.png?raw=true" width="500px">
 </p>
 </div>
 
@@ -294,11 +294,11 @@ ggsave(filename="plot_facet.png", plot=plot_facet, width =7 , height=5, units="i
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="800px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="500px">
 </p>
 </div>
 
-## 📈 Tercera Gráfica: Diagrama de barras
+## 📊 Tercera Gráfica: Diagrama de barras
 
 En esta última gráfica se organizaran los datos de forma descendente con respecto a los ingresos. Se usará la librería *dplyr* con la función **arrange()**. Luego, se tomarán solo las columnas necesarias para el gráfico usando **select()**. La gráfica final tendrá como barras principales las ganancias de cada película, como barra secundarias el presupuesto de las mismas y en su eje verticas estarà el poster de cada estreno acompañado del nombre y año de extreno de las películas sobre la barra principal. Todo lo anterior se obtiene al usar las funciones **geo_col()**, **geo_text()**, **geo_image()** y **geo_curve()** de la librería *ggimage*.
 
@@ -308,8 +308,8 @@ En esta última gráfica se organizaran los datos de forma descendente con respe
 
 <div>
 <p style = 'text-align:center;'>
-<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="800px">
+<img src="https://github.com/AlejandraTM/R-LadiesMorelia-Plots/blob/main/Graficos/plot_facet.png?raw=true" alt="JuveYell" width="500px">
 </p>
 </div>
 
-A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
+🧬 A plots example of a horror database using ggplot2. The espanish version of the R-Ladies Paris workshop  https://github.com/tashapiro/horror-movies
